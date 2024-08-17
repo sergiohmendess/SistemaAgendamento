@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">
+        {% if is_admin %}
+            Painel de Controle do Administrador
+        {% else %}
+            Painel de Controle
+        {% endif %}
+    </h2>
+
+    <!-- Formulário de atualização e logout -->
+    <form method="POST" action="{{ url_for('painel') }}" class="form-group">
+        <div class="mb-3">
+            <label for="phone_number" class="form-label">Número para Notificações:</label>
+            <input type="text" id="phone_number" name="phone_number" class="form-control" value="{{ phone_number }}">
+        </div>
+
+        <button type="submit" name="update_phone" class="btn btn-primary me-2">Atualizar Número</button>
+        <button type="submit" name="logout" class="btn btn-danger">Logout</button>
+    </form>
+
+    <!-- Se o usuário for administrador, exibir link para painel de administração -->
+    {% if is_admin %}
+        <div class="mt-4">
+            <a href="{{ url_for('admin_usuarios') }}" class="btn btn-secondary">Gerenciar Usuários</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

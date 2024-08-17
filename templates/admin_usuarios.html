@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin - Usuários{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Gerenciar Usuários</h2>
+
+    <!-- Adicionando um botão para adicionar um novo usuário -->
+    <div class="mb-3">
+        <a href="{{ url_for('adicionar_usuario') }}" class="btn btn-success">Adicionar Novo Usuário</a>
+    </div>
+
+    <!-- Adicionando uma barra de pesquisa para facilitar a busca de usuários -->
+    <div class="mb-4">
+        <input type="text" id="searchInput" class="form-control" placeholder="Pesquisar usuários...">
+    </div>
+
+    <table class="table table-striped" id="usuariosTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Função</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.id }}</td>
+                <td>{{ usuario.nome }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ 'Admin' if usuario.is_admin else 'Usuário' }}</td>
+                <td>
+                    <a href="{{ url_for('editar_usuario', id=usuario.id) }}" class="btn btn-primary btn-sm">Editar</a>
+                    <a href="{{ url_for('deletar_usuario', id=usuario.id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir este usuário?');">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Script para filtragem de usuários na tabela -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const table = document.getElementById('usuariosTable');
+        const rows = table.querySelectorAll('tbody tr');
+
+        searchInput.addEventListener('keyup', function() {
+            const query = searchInput.value.toLowerCase();
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const matches = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(query));
+                row.style.display = matches ? '' : 'none';
+            });
+        });
+    });
+</script>
+{% endblock %}

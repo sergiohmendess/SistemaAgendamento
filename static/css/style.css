@@ -1,0 +1,357 @@
+/* Importação de fontes personalizadas */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap');
+
+/* Estilo geral do corpo */
+body {
+    font-family: 'Poppins', sans-serif; /* Fonte moderna e elegante */
+    background: #f9f9f9; /* Cor de fundo neutra */
+    color: #333; /* Texto escuro para boa legibilidade */
+    margin: 0;
+    padding: 0;
+    background-image: url('static/css/images/background.jpg'); /* Imagem de padrão */
+    background-size: cover; /* Ajusta o tamanho do padrão */
+    background-attachment: fixed; /* Mantém o padrão fixo durante o scroll */
+}
+
+/* Estilo para o contêiner principal */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem;
+    background: #fff; /* Fundo branco para contraste */
+    border-radius: 12px; /* Bordas arredondadas mais sutis */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+/* Cabeçalho */
+header {
+    background: linear-gradient(135deg, #f5a3a0, #f497a2); /* Gradiente rosa */
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    border-bottom: 4px solid #f497a2; /* Rosa suave */
+    z-index: 1;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    animation: fadeIn 0.5s ease-in-out; /* Animação de fade-in */
+}
+
+/* Logotipo e branding */
+header img.logo {
+    max-width: 150px;
+    margin-bottom: 1rem;
+}
+
+/* Navegação */
+nav {
+    background: #f497a2; /* Rosa suave */
+    padding: 1rem 0;
+    border-bottom: 2px solid #f5a3a0; /* Rosa claro */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+nav ul li a:hover {
+    background: #f5a3a0; /* Rosa claro */
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* Estilo do formulário */
+form {
+    background: #fff; /* Fundo branco */
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+    animation: fadeIn 0.5s ease-in-out; /* Animação de fade-in */
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    border-color: #f497a2; /* Rosa suave */
+    box-shadow: 0 0 8px rgba(244, 151, 162, 0.3);
+    outline: none;
+}
+
+form input[type="submit"] {
+    background: #f5a3a0; /* Rosa claro */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+form input[type="submit"]:hover {
+    background: #f497a2; /* Rosa suave */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo dos botões principais */
+button {
+    background: #f5a3a0; /* Rosa claro */
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    outline: none;
+    animation: fadeIn 0.5s ease-in-out; /* Animação de fade-in */
+}
+
+/* Efeito de hover para o botão principal */
+button:hover {
+    background: #f497a2; /* Rosa suave */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Efeito de foco para o botão */
+button:focus {
+    box-shadow: 0 0 8px rgba(255, 105, 180, 0.3); /* Rosa claro */
+    outline: none;
+}
+
+/* Botão secundário */
+button.secondary {
+    background: #e8c1c1; /* Rosa pálido */
+    color: #333;
+}
+
+/* Efeito de hover para o botão secundário */
+button.secondary:hover {
+    background: #d7a8a8; /* Rosa um pouco mais escuro */
+}
+
+/* Botão de sucesso */
+button.success {
+    background: #c8e6c9; /* Verde claro */
+    color: #333;
+}
+
+/* Efeito de hover para o botão de sucesso */
+button.success:hover {
+    background: #a5d6a7; /* Verde mais escuro */
+}
+
+/* Botão de alerta */
+button.alert {
+    background: #f8d7da; /* Vermelho claro */
+    color: #721c24; /* Vermelho escuro */
+}
+
+/* Efeito de hover para o botão de alerta */
+button.alert:hover {
+    background: #f5c6cb; /* Vermelho mais escuro */
+}
+
+/* Rodapé */
+footer {
+    background: #f497a2; /* Rosa suave */
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    border-top: 4px solid #f5a3a0; /* Rosa claro */
+    z-index: 1;
+    animation: fadeIn 0.5s ease-in-out; /* Animação de fade-in */
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Cartões e listas */
+.card {
+    background: #fff; /* Fundo branco */
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeIn 0.5s ease-in-out; /* Animação de fade-in */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: #f497a2; /* Rosa suave */
+    border-bottom: 2px solid #f5a3a0; /* Rosa claro */
+    padding-bottom: 0.5rem;
+}
+
+/* Tabelas */
+table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+    margin: 1.5rem 0;
+}
+
+table th, table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background: #f497a2; /* Rosa suave */
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+table tr:nth-child(even) {
+    background: #f2f2f2; /* Cinza muito claro */
+}
+
+table tr:hover {
+    background: #e8e8e8; /* Cinza claro */
+}
+
+/* Alertas */
+.alert {
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    animation: fadeIn 0.5s ease-in-out; /* Animação de fade-in */
+}
+
+.alert.success {
+    background: #d4edda; /* Verde claro */
+    color: #155724; /* Verde escuro */
+}
+
+.alert.error {
+    background: #f8d7da; /* Vermelho claro */
+    color: #721c24; /* Vermelho escuro */
+}
+
+/* Mensagens */
+.message {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    animation: fadeIn 0.5s ease-in-out; /* Animação de fade-in */
+}
+
+.message.success {
+    background: #d4edda; /* Verde claro */
+    color: #155724; /* Verde escuro */
+}
+
+.message.error {
+    background: #f8d7da; /* Vermelho claro */
+    color: #721c24; /* Vermelho escuro */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    form input, form select, form textarea {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    form input, form select, form textarea {
+        font-size: 0.85rem;
+    }
+}
+
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Acessibilidade */
+a, button, input[type="submit"] {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+a:focus, button:focus, input[type="submit"]:focus {
+    outline: 2px solid #f497a2; /* Rosa suave */
+}
+
+/* Efeitos de animação */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

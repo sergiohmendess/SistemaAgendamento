@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block title %}Agendar Horário{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Agendar Horário</h2>
+
+<form method="POST" class="form-group">
+    <div class="mb-3">
+        <label for="nome" class="form-label">Nome:</label>
+        <input type="text" id="nome" name="nome" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="telefone" class="form-label">Telefone:</label>
+        <input type="text" id="telefone" name="telefone" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" id="email" name="email" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="tipo_volume" class="form-label">Tipo de Volume:</label>
+        <select id="tipo_volume" name="tipo_volume" class="form-select" required>
+            <option value="Volume Brasileiro">Volume Brasileiro</option>
+            <option value="Volume Egípcio">Volume Egípcio</option>
+            <option value="Volume Glam">Volume Glam (fio a fio)</option>
+            <option value="Volume Mega Brasileiro">Volume Mega Brasileiro</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="servico" class="form-label">Serviço:</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="colocacao" name="servico" value="Colocação" required>
+            <label class="form-check-label" for="colocacao">Colocação</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="manutencao" name="servico" value="Manutenção">
+            <label class="form-check-label" for="manutencao">Manutenção</label>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="data_agendamento" class="form-label">Data do Agendamento:</label>
+        <input type="date" id="data_agendamento" name="data_agendamento" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="endereco" class="form-label">Endereço:</label>
+        <select id="endereco" name="endereco" class="form-select" required>
+            <option value="Eme Premium Salon">Eme Premium Salon</option>
+            <option value="Studio MSalles">Studio MSalles</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="horario" class="form-label">Horário:</label>
+        <select id="horario" name="horario" class="form-select" required>
+            <!-- Horários disponíveis serão preenchidos via JavaScript -->
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Agendar</button>
+</form>
+
+<hr class="my-4">
+
+<h3 class="mb-4">Informações Adicionais</h3>
+<div class="mb-3">
+    <h4>Preços dos Volumes:</h4>
+    <ul>
+        <li><strong>Volume Brasileiro:</strong> Colocação R$175,00 | Manutenção R$150,00</li>
+        <li><strong>Volume Egípcio:</strong> Colocação R$195,00 | Manutenção R$150,00</li>
+        <li><strong>Volume Glam (fio a fio):</strong> Colocação R$205,00 | Manutenção R$160,00</li>
+        <li><strong>Volume Mega Brasileiro:</strong> Colocação R$250,00 | Manutenção R$180,00</li>
+    </ul>
+</div>
+
+<div class="mb-3">
+    <h4>Endereços:</h4>
+    <p>Eme Premium Salon - Rua Dr. Pereira Nunes N1, Ingá - Niterói</p>
+    <p>Studio MSalles - Travessa Circular, 60 - Alcântara - SG</p>
+</div>
+
+<div class="mb-3">
+    <h4>Horários:</h4>
+    <p>De 9h às 18h de Terça a Sáb. (Eme Premium Salon)</p>
+    <p>De 9h às 19h de Terça a Sáb. (Studio MSalles)</p>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const horarios = {
+            'Eme Premium Salon': ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            'Studio MSalles': ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00']
+        };
+
+        const enderecoSelect = document.querySelector('#endereco');
+        const horarioSelect = document.querySelector('#horario');
+
+        enderecoSelect.addEventListener('change', function() {
+            const selectedEndereco = enderecoSelect.value;
+            const availableHorarios = horarios[selectedEndereco] || [];
+
+            horarioSelect.innerHTML = '';
+            availableHorarios.forEach(function(hora) {
+                const option = document.createElement('option');
+                option.value = hora;
+                option.textContent = hora;
+                horarioSelect.appendChild(option);
+            });
+        });
+
+        // Inicializar horários com o endereço padrão
+        enderecoSelect.dispatchEvent(new Event('change'));
+    });
+</script>
+{% endblock %}

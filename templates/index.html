@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Página Inicial{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Bem-vindo à Nossa Plataforma</h1>
+    <p class="lead">Utilize o menu para agendar seu horário ou acessar outras funcionalidades.</p>
+    
+    <div class="row mt-4">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Agendar Horário</h5>
+                    <p class="card-text">Clique aqui para agendar seu horário para os serviços de sobrancelhas.</p>
+                    <a href="{{ url_for('agendar') }}" class="btn btn-primary">Agendar Agora</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Visualizar Agendamentos</h5>
+                    <p class="card-text">Veja seus agendamentos futuros e passados.</p>
+                    <a href="{{ url_for('visualizar') }}" class="btn btn-secondary">Visualizar Agendamentos</a>
+                </div>
+            </div>
+        </div>
+
+        {% if 'user_id' in session %}
+            {% set user = Usuario.query.get(session['user_id']) %}
+            {% if user and user.is_admin %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Administração</h5>
+                            <p class="card-text">Acesse a área de administração para gerenciar usuários e configurações.</p>
+                            <a href="{{ url_for('admin_usuarios') }}" class="btn btn-danger">Área de Admin</a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
